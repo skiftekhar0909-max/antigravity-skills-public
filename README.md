@@ -1,76 +1,228 @@
 # Antigravity Skills Toolkit
 
-A community-oriented collection of reusable skills for Google Antigravity. The pack combines focused instructions for UI/UX design, web application architecture, code cleanup, and beginner-friendly code explanations, with additional UI/UX reference material.
+> **A curated, production-ready collection of operational skills for Google Antigravity.**
+> Supercharge your pair-programming AI agent with specialized runbooks for high-fidelity UI/UX design, full-stack application architecture, extreme code de-bloating, and human-friendly code translation.
 
-> **Status:** Community-maintained starter pack. Review each skill and test it in a non-critical project before relying on its output.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Platform: Cross-Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-brightgreen.svg)](docs/INSTALLATION.md)
+[![Status: Community-Maintained](https://img.shields.io/badge/Status-Community--Maintained-orange.svg)](CONTRIBUTING.md)
 
-## Skills included
+---
 
-| Skill | Folder | Use it for |
-|---|---|---|
-| UI/UX Design Engine | `skills/uiux-design-engine/` | Interface design, responsive layouts, design systems, motion, accessibility, and visual QA |
-| Web Development Architect | `skills/web-dev-architect/` | Project structure, frontend/backend architecture, implementation planning, and production-readiness checks |
-| Code Optimizer & Purifier | `skills/code-optimizer-purifier/` | Behavior-preserving refactors, dead-code cleanup, and reducing unnecessary complexity |
-| Human-Friendly Code Explainer | `skills/code-explainer-human/` | Explaining code clearly for beginners, including English and Hinglish-style explanations |
+## What Is This?
 
-The UI/UX skill includes two Markdown references under `skills/uiux-design-engine/references/`: a design-intelligence catalogue and a broader UI/UX field guide.
+In Google Antigravity, **Skills** are modular packages containing operational knowledge, triggers, and execution workflows. Instead of relying on generic AI advice, skills transform your agent into a disciplined domain expert with strict invariants, phased workflows, and zero-code-drop policies.
 
-## Quick start
+This repository provides **four foundational skills**, backed by extensive design catalogues, native cross-platform installers for Windows and Unix, and an automated verification test suite.
 
-### Option A — Install into the current project
+---
 
-1. Download or clone this repository.
-2. Open a terminal in your application project's root directory.
-3. Run the installer from the downloaded repository:
+## Quick Start (Install in Under 60 Seconds)
 
-   ```bash
-   bash /path/to/antigravity-skills/install.sh
-   ```
+### On Windows (Native PowerShell — No WSL Needed!)
 
-   Replace `/path/to/antigravity-skills` with the actual extracted or cloned path.
+Open PowerShell (`powershell.exe`) and run:
 
-The installer copies the skill folders into `.agent/skills/` in the current project.
+```powershell
+# Navigate to this repository folder
+Set-Location "$HOME\Downloads\antigravity-skills"
 
-### Option B — Install globally
-
-```bash
-bash /path/to/antigravity-skills/install.sh --global
+# Install all skills globally across all your projects
+.\scripts\install.ps1 -Global
 ```
 
-The default global destination is `~/.gemini/antigravity/skills/`.
+> **Blocked by Windows Execution Policy?** Run with bypass for this command:
+> ```powershell
+> powershell -ExecutionPolicy Bypass -File .\scripts\install.ps1 -Global
+> ```
 
-### Option C — Choose a destination
+### On Linux & macOS (Terminal)
+
+Open your terminal and run:
 
 ```bash
-bash /path/to/antigravity-skills/install.sh --target "/path/to/skills"
+cd ~/Downloads/antigravity-skills
+chmod +x scripts/install.sh scripts/uninstall.sh
+bash scripts/install.sh --global
 ```
 
-### Windows
+### Drag-and-Drop Manual Install (Zero Dependencies)
 
-Use Git Bash or WSL to run `install.sh`, or manually copy the desired skill folder(s) into the relevant Antigravity skills directory. For workspace installation, the repository's intended destination is `<project-root>/.agent/skills/`. For global installation, the default is `%USERPROFILE%\.gemini\antigravity\skills\`.
+1. Download this repository as a ZIP using the green **Code** -> **Download ZIP** button above.
+2. Extract the archive.
+3. Open your Antigravity global skills folder:
+   - **Windows:** Press `Win + R`, paste `%USERPROFILE%\.gemini\config\skills`, and press Enter.
+   - **macOS / Linux:** Open `~/.gemini/config/skills/`.
+4. Copy any skill folder from `skills/` (e.g., `uiux-design-engine`) into that directory.
+5. Reload or restart Antigravity.
 
-After installing, reload or restart Antigravity if the new skills are not detected.
+---
 
-## Install a single skill manually
+## Skills Included in the Toolkit
 
-Copy just one folder, for example `skills/uiux-design-engine/`, into your project's `.agent/skills/` directory. Keep the skill folder name and its `SKILL.md` file together. Preserve the `references/` subfolder for the UI/UX skill because its instructions may refer to those documents.
+| Skill | Directory | Triggers & Use Cases | Key Invariants & Standards |
+|---|---|---|---|
+| **[UI/UX Design Engine](skills/uiux-design-engine/SKILL.md)** | [`skills/uiux-design-engine/`](skills/uiux-design-engine/SKILL.md) | *"make it look modern"*, *"design a landing page"*, *"give it a premium feel"*, *"improve visual design"*, *"design a card/modal"* | Zero generic output; WCAG 2.2 AA accessibility; 60fps micro-interactions; consults [Design Intelligence](references/design-intelligence.md) and [UI/UX Field Guide](references/ui-ux-field-guide.md). |
+| **[Web Dev Architect](skills/web-dev-architect/SKILL.md)** | [`skills/web-dev-architect/`](skills/web-dev-architect/SKILL.md) | *"scaffold the project"*, *"set up Next.js App Router"*, *"wire up backend/auth"*, *"add database schema"*, *"make this production-ready"* | **Strict Zero-Code-Drop Policy**: No `// TODO`, no `// ...existing code...`, complete typed implementations with environment schemas. |
+| **[Code Optimizer Purifier](skills/code-optimizer-purifier/SKILL.md)** | [`skills/code-optimizer-purifier/`](skills/code-optimizer-purifier/SKILL.md) | *"this file is too long"*, *"remove the junk AI wrote"*, *"clean up dead code"*, *"refactor for brevity"*, *"eliminate redundant state"* | **100% behavior preservation**; public API stability; no new abstractions or dependencies; measures lines removed vs touched. |
+| **[Code Explainer Human](skills/code-explainer-human/SKILL.md)** | [`skills/code-explainer-human/`](skills/code-explainer-human/SKILL.md) | *"explain like I am not a dev"*, *"what does this file do"*, *"samjhao"*, *"simple words me batao"*, *"explain in Hinglish / Hindi"* | Zero jargon; real-world physical metaphors; multi-lingual (English, Hinglish, Hindi Devanagari); tailored for founders and beginners. |
 
-## Safety and quality notes
+---
 
-- Read a skill's `SKILL.md` before enabling it in an important project.
-- Back up local customizations before installing. The installer may overwrite files with matching names inside a skill folder, but it does not delete unrelated skill folders.
-- Review generated code. Run your project's tests, linting, type checks, and production build before shipping changes.
-- Never place API keys, passwords, `.env` files, private client data, or proprietary project files in this repository.
-- Antigravity versions and skill discovery behavior can change; if installation does not work, check the current official Antigravity documentation and adjust the destination accordingly.
+## Reference Guides
+
+This repository includes two deep reference documents located in [`references/`](references/):
+
+1. **[`references/design-intelligence.md`](references/design-intelligence.md)**: A 1,300+ line catalogue detailing visual paradigms (Glassmorphism, Minimalist Mono, Bento Grids, Cyberpunk HUD), motion tokens, typography pairings, and domain-specific UI presets.
+2. **[`references/ui-ux-field-guide.md`](references/ui-ux-field-guide.md)**: A comprehensive reference covering UX discovery, interaction heuristics (Nielsen's 10), information architecture, wireframing, and accessibility compliance.
+
+---
+
+## Installation Scenarios
+
+### Global vs Workspace Installation
+
+Google Antigravity supports two discovery scopes:
+
+- **Global Scope (`-Global` / `--global`):**
+  - **Windows:** `%USERPROFILE%\.gemini\config\skills\`
+  - **Linux / macOS:** `~/.gemini/config/skills/`
+  - *Best for:* Making skills available across all current and future projects on your machine.
+- **Workspace Scope (`-Workspace` / `--workspace`):**
+  - **Path:** `<project-root>/.agents/skills/` (or `.agent/skills/`)
+  - *Best for:* Sharing specific skills with your engineering team via Git.
+
+### Installing a Single Skill
+
+You can install only the specific skills you need:
+
+**Windows PowerShell:**
+```powershell
+# Install only UI/UX Design Engine
+.\scripts\install.ps1 -Global -Skill uiux-design-engine
+
+# Install two specific skills
+.\scripts\install.ps1 -Global -Skill uiux-design-engine, web-dev-architect
+```
+
+**Linux / macOS Bash:**
+```bash
+# Install only UI/UX Design Engine
+bash scripts/install.sh --global --skill uiux-design-engine
+
+# Install two specific skills
+bash scripts/install.sh --global --skill uiux-design-engine --skill web-dev-architect
+```
+
+### Previewing Installation (Dry-Run)
+
+Preview what will be installed or skipped without modifying any files:
+
+- **Windows:** `.\scripts\install.ps1 -Global -DryRun`
+- **Unix:** `bash scripts/install.sh --global --dry-run`
+
+### Updating Existing Skills
+
+If you have updated this repository or pulled new commits:
+
+- **Windows:** `.\scripts\install.ps1 -Global -Force`
+- **Unix:** `bash scripts/install.sh --global --force`
+
+---
+
+## How to Verify That a Skill Works
+
+1. **Verify Files on Disk:**
+   - **Windows:** Run `Get-ChildItem "$HOME\.gemini\config\skills"`
+   - **Linux / macOS:** Run `ls -la ~/.gemini/config/skills`
+   Ensure your skill folders (`uiux-design-engine`, etc.) appear with `SKILL.md` inside.
+
+2. **Reload Antigravity:**
+   In your Antigravity IDE, press `Ctrl + Shift + P` (or `Cmd + Shift + P` on macOS) and run:
+   `Developer: Reload Window`
+
+3. **Prompt the Agent:**
+   Test with an explicit trigger query in chat:
+   - *"Design a clean modern SaaS navbar with dark mode support."* (Activates `uiux-design-engine`)
+   - *"Audit this component and remove any redundant state."* (Activates `code-optimizer-purifier`)
+   - *"Explain how this backend authentication route works in simple Hinglish."* (Activates `code-explainer-human`)
+
+---
+
+## Uninstallation
+
+We provide dedicated uninstallers that safely remove only toolkit skills without deleting your other personal or custom skills:
+
+**Windows PowerShell:**
+```powershell
+# Preview what would be removed
+.\scripts\uninstall.ps1 -Global -All -DryRun
+
+# Remove all toolkit skills globally
+.\scripts\uninstall.ps1 -Global -All
+
+# Remove only one specific skill
+.\scripts\uninstall.ps1 -Global -Skill uiux-design-engine
+```
+
+**Linux / macOS Bash:**
+```bash
+# Remove all toolkit skills globally
+bash scripts/uninstall.sh --global --all
+
+# Remove only one specific skill
+bash scripts/uninstall.sh --global --skill uiux-design-engine
+```
+
+---
+
+## Documentation & Deep Guides
+
+- **[Installation Guide](docs/INSTALLATION.md):** Complete installation manual covering manual and automated workflows.
+- **[Windows Guide](docs/WINDOWS-GUIDE.md):** Dedicated Windows setup, PowerShell execution policy tips, and resolving WSL issues.
+- **[Linux & macOS Guide](docs/LINUX-MACOS-GUIDE.md):** Terminal workflow and permission management.
+- **[Troubleshooting Guide](docs/TROUBLESHOOTING.md):** Solutions for 15 common discovery, path, and syntax errors.
+- **[Skill Authoring Guide](docs/SKILL-AUTHORING.md):** How to create, structure, and test your own Antigravity skills.
+- **[Attribution & Sources](SOURCES.md):** Source archive records and assembly history.
+
+---
+
+## Automated Validation Test Suite
+
+This repository includes a standalone test suite in Python (standard library only, zero pip dependencies):
+
+```bash
+python tests/validate_repository.py
+```
+
+The test suite validates:
+- [x] Every skill directory contains `SKILL.md`.
+- [x] All frontmatter conforms to YAML specifications (`name`, `description`).
+- [x] Directory names match skill `name` fields.
+- [x] Skill names are globally unique.
+- [x] All internal relative markdown links resolve to real files.
+- [x] No hardcoded personal or machine-specific paths exist in scripts.
+- [x] Security and `.gitignore` rules prevent credential leakage.
+
+---
+
+## Security
+
+Please review [SECURITY.md](SECURITY.md) for our vulnerability disclosure policy.
+
+- **No Secrets:** Never commit real API keys, passwords, or tokens. Use [`.env.example`](.env.example) as a placeholder guide.
+- **Safe Scripts:** Installers operate strictly on designated skill folders without modifying system configuration or installing global software.
+
+---
 
 ## Contributing
 
-Contributions are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request. Suggested contributions include clearer triggers, more precise instructions, tested examples, installation fixes, and corrections to the reference material.
+Contributions are warmly welcomed! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for instructions on creating skills, formatting frontmatter, and submitting pull requests.
 
-## License and source review
+---
 
-This repository is intended to be published under the MIT License; see [LICENSE](LICENSE). Before publishing, the maintainer must confirm they have the right to redistribute and relicense every included skill and reference document. The source archives may contain material with separate licensing or attribution requirements. If permission is unclear, remove or replace that material before making the repository public.
+## License & Community Disclaimer
 
-## Disclaimer
+This repository is distributed under the [MIT License](LICENSE).
 
-This project is an independent community resource and is not an official Google product. “Google Antigravity” is used only to describe compatibility and intended use.
+> **Disclaimer:** This project is an independent, community-driven resource and is **not** an official Google product. "Google Antigravity" is referenced solely to indicate technical compatibility and intended use.

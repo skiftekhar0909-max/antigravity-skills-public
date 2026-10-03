@@ -1,32 +1,85 @@
-# Contributing
+# Contributing to Antigravity Skills Toolkit
 
-Thanks for helping improve this Antigravity skills collection.
+Thank you for your interest in contributing to the **Antigravity Skills Toolkit**! We welcome community contributions, including new specialized skills, installer improvements, trigger refinements, and bug fixes.
 
-## Before you start
+---
 
-- Search existing issues and pull requests to avoid duplicate work.
-- Keep each skill focused on a clear activation condition and task.
-- Preserve the YAML frontmatter at the beginning of each `SKILL.md`.
-- Ensure the frontmatter `name` matches the skill directory name.
-- Avoid repeating instructions across skills unless the repetition is necessary for independent use.
-- Do not add secrets, private data, client materials, or content you do not have permission to redistribute.
+## Code of Conduct & Core Standards
 
-## Suggested workflow
+1. **Production Quality:** All skills must be production-ready with clear, actionable operational instructions—not generic advice or empty placeholders.
+2. **Strict Privacy & Safety:** Never commit API keys, personal paths, private tokens, passwords, or client proprietary code.
+3. **No Redundant Bloat:** Skills should have crisp triggers and rely on progressive disclosure via `references/` for bulky catalogues.
+4. **Independent Rights:** Only submit material that you have authored or have confirmed rights to distribute under the repository's MIT License.
 
-1. Fork the repository and create a branch for your change.
-2. Make the smallest useful change.
-3. Test shell-script changes with `bash -n install.sh`.
-4. Check that every skill has valid frontmatter and a matching folder/name.
-5. Test installation into a temporary directory before changing your own Antigravity setup.
-6. Open a pull request describing the problem, the change, and how you tested it.
+---
 
-## Skill quality checklist
+## How to Add or Update a Skill
 
-- [ ] Activation triggers are specific and easy to understand.
-- [ ] Instructions are ordered and actionable.
-- [ ] Destructive operations require appropriate caution and confirmation.
-- [ ] Examples are accurate and do not contain credentials.
-- [ ] No unnecessary duplicate paragraphs or contradictory rules were added.
-- [ ] Related reference files and links remain valid.
+1. **Review Authoring Guidelines:**
+   Read [docs/SKILL-AUTHORING.md](docs/SKILL-AUTHORING.md) for detailed structural standards and frontmatter requirements.
 
-By submitting a contribution, you confirm that you have the right to submit the content under the repository's stated license.
+2. **Create the Skill Folder:**
+   Add your new skill under `skills/<skill-name>/` with a matching `SKILL.md`:
+   ```text
+   skills/my-new-skill/
+   ├── SKILL.md
+   └── references/ (optional)
+   ```
+
+3. **Frontmatter Standard:**
+   Ensure `SKILL.md` begins with valid YAML frontmatter:
+   ```markdown
+   ---
+   name: my-new-skill
+   description: Trigger-rich description with positive triggers and negative triggers.
+   ---
+   ```
+   The `name` field must match the directory name exactly.
+
+4. **Preserve References:**
+   If your skill refers to external guides, place them in `skills/<skill-name>/references/` or `references/` and use relative links.
+
+---
+
+## Verification & Testing
+
+Before opening a pull request, run the automated test suite:
+
+```bash
+# Run the repository validation suite (requires Python 3.8+)
+python tests/validate_repository.py
+```
+
+The validator verifies:
+- All skills contain valid `SKILL.md` with correct YAML frontmatter.
+- Skill names match directory names and are unique.
+- Internal relative markdown links resolve to existing files.
+- Installer scripts contain no hardcoded personal machine paths.
+- Required repository and documentation files are present.
+
+### Testing Installers
+- **Windows PowerShell:**
+  ```powershell
+  powershell -ExecutionPolicy Bypass -File .\scripts\install.ps1 -DryRun
+  powershell -ExecutionPolicy Bypass -File .\scripts\install.ps1 -List
+  ```
+- **Linux / macOS Bash:**
+  ```bash
+  bash scripts/install.sh --dry-run
+  bash scripts/install.sh --list
+  ```
+
+---
+
+## Submitting a Pull Request
+
+1. Fork the repository and create your feature branch:
+   ```bash
+   git checkout -b feature/my-new-skill
+   ```
+2. Commit your changes with a descriptive commit message following [Conventional Commits](https://www.conventionalcommits.org/):
+   ```bash
+   git commit -m "feat(skills): add my-new-skill for automated database migrations"
+   ```
+3. Push to your branch and open a Pull Request.
+4. Describe the problem your change solves, the triggers used, and how you validated the skill locally.

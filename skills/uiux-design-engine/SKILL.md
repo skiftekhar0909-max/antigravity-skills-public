@@ -15,13 +15,17 @@ view, production-grade motion, and verifiable accessibility.
 
 ## Reference Catalogue
 
-This skill includes `references/design-intelligence.md`, a detailed catalogue of design styles, motion patterns, industry presets, implementation considerations, and quality gates. Consult it when the project needs a broader design direction or when the user asks for multiple options. Treat it as a menu, not a mandate: choose only what fits the product, user goals, accessibility, performance, existing brand assets, and technical constraints. Do not dump the entire catalogue into the answer or combine incompatible styles just to appear comprehensive.
+This skill includes two comprehensive reference guides in `references/`:
+1. `references/design-intelligence.md` — A detailed catalogue of design styles, motion patterns, industry presets, implementation considerations, and quality gates. Consult it when the project needs a broader visual design direction or when exploring aesthetic options.
+2. `references/ui-ux-field-guide.md` — A complete UX design field guide covering interaction models, research methods, information architecture, wireframing, heuristic checklists, and accessibility field standards. Consult it during discovery, planning, user flow design, and UX auditing.
+
+Treat these references as menus, not mandates: choose only what fits the product, user goals, accessibility, performance, existing brand assets, and technical constraints. Do not dump entire catalogues into your response or combine incompatible styles just to appear comprehensive.
 
 ---
 
 ## 2. Phase 0 — Workspace Context Check (Always Run First)
 
-Before writing a single style declaration, inspect the workspace. If the shared design reference is available, consult `references/design-intelligence.md` when it adds value.
+Before writing a single style declaration, inspect the workspace. If the shared design references are available, consult `references/design-intelligence.md` or `references/ui-ux-field-guide.md` when they add value.
 
 **Inspection checklist:**
 
